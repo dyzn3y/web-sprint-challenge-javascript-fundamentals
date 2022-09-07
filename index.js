@@ -185,32 +185,34 @@ function greeting(firstName, lastName){
 - Instances of CuboidMaker should initialize `length`, `width` and `height` properties
 */
 
-function CuboidMaker(/*Your Code Here */){
-  /*Your Code Here */
+function CuboidMaker({length, width, height}){
+  return {length, width, height};
 }
-
+console.log(CuboidMaker({length: 20, width: 30, height: 40}))
 
 /* 🐴🐴🐴 Step 2: Volume Method 🐴🐴🐴
   Create a method called volume using CuboidMaker's prototype that returns the volume of a given cuboid's length, width, and height
   💡 NOTE: Formula for cuboid volume: length * width * height   
 */
-
-
-
+CuboidMaker.prototype.volume = function() {
+  this.length * this.width * this.height;
+}
 
 /* 🐴🐴🐴 Step 3: Surface Area Method 🐴🐴🐴
   Create another method called surfaceArea using CuboidMaker's prototype that returns the surface area of a given cuboid's length, width, and height. 
   💡 NOTE: Formula for cuboid surface area: 2 * (length * width + length * height + width * height)  
 */
 
-
+CuboidMaker.prototype.surfaceArea = function() {
+  return 2 * (this.length * this.width + this.length * this.height + this.width * this.height);
+}
 
 
 /* 🐴🐴🐴 Step 4: Create a new object that uses CuboidMaker (not auto graded)🐴🐴🐴
   Create an object called cuboid that uses the new keyword to use our CuboidMaker constructor
   Add properties and values of length: 4, width: 5, and height: 5 to cuboid. */
 
-
+const cuboid = CuboidMaker({length: 4, width: 5, height: 6})
 
 
 
@@ -224,9 +226,23 @@ function CuboidMaker(/*Your Code Here */){
 //Using CuboidMakerTwo, take your prototypes from above and refactor into class syntax. Then, create an object called cuboidTwo that uses the new keyword to use our CuboidMakerTwo class.
  
 class CuboidMakerTwo{
-
+constructor({length, width, height}) {
+  this.length = length;
+  this.width = width;
+  this.height = height;
 }
-
+volume(){
+  return this.length * this.width * this.height;
+}
+surfaceArea(){
+  return 2 * (this.length * this.width + this.length * this.height + this.width * this.height)
+}
+}
+class cuboidTwo extends CuboidMakerTwo{
+  constructor({length, width, height}) {
+super({length, width, height});
+  }
+  }
 
 
 
