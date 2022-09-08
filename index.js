@@ -65,10 +65,12 @@ const zooAnimals = [
 
   function animalNames(array){
     const displayNames = [];
-    
-
+    array.forEach(element => {
+      displayNames.push(`name: ${element.animal_name}, scientific: ${element.scientific_name}`)
+    });
+    return displayNames
   }
-  console.log(animalNames(zooAnimals));
+  console.log('request 1',animalNames(zooAnimals));
 
   /* 🦁🦁🦁 Request 2: .map() 🦁🦁🦁
   The zoo needs a list of all their animal's names converted to lower case. 
@@ -110,12 +112,20 @@ const zooAnimals = [
   💡 NOTE: Remember the reduce method takes two arguments: a callback (which itself takes two args - the accumulator and the item), and an initial value for the count. Check MDN/W3Schools for syntax!
   */
 
+
+  
   function USApop(array){
-    const animalPopulation = array.reduce((accumulator, population) =>{
+    let populationZoo = array.map(function(element){
+      return element.population;
+    })
+    const animalPopulation = populationZoo.reduce((accumulator, population) =>{
       return accumulator + population
       },0);
+      return animalPopulation;
+
   }
   console.log(USApop(zooAnimals));
+  // need to pull the numbers before I can use reduce
   
   // 🦁🦁🦁 Callbacks 🦁🦁🦁  
   /* 🦁🦁🦁 Step 1: Create a higher-order function 🦁🦁🦁
@@ -197,6 +207,7 @@ console.log(CuboidMaker({length: 20, width: 30, height: 40}))
 CuboidMaker.prototype.volume = function() {
   this.length * this.width * this.height;
 }
+// need to get this method to work
 
 /* 🐴🐴🐴 Step 3: Surface Area Method 🐴🐴🐴
   Create another method called surfaceArea using CuboidMaker's prototype that returns the surface area of a given cuboid's length, width, and height. 
@@ -206,7 +217,7 @@ CuboidMaker.prototype.volume = function() {
 CuboidMaker.prototype.surfaceArea = function() {
   return 2 * (this.length * this.width + this.length * this.height + this.width * this.height);
 }
-
+// need to get this method to work
 
 /* 🐴🐴🐴 Step 4: Create a new object that uses CuboidMaker (not auto graded)🐴🐴🐴
   Create an object called cuboid that uses the new keyword to use our CuboidMaker constructor
